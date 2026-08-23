@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2e0c14" />
+  <title>Shivani & Jayanth · Engagement Gallery</title>
+  <style>
+    :root{--maroon:#2e0c14;--maroon2:#4a1520;--gold:#c9a227;--gold2:#e8d48b;--cream:#f7f0e6}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top,#5a1c2c 0,#2e0c14 38%,#18070b 100%);color:var(--cream);font-family:Georgia,serif;min-height:100vh}
+    .wrap{width:min(1120px,92%);margin:auto;padding:34px 0 70px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:36px}.back{color:var(--gold2);text-decoration:none;border:1px solid rgba(232,212,139,.45);padding:10px 15px;border-radius:999px;font:700 10px/1 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;background:rgba(201,162,39,.08)}
+    .eyebrow{font:700 10px/1 Arial,sans-serif;letter-spacing:.35em;text-transform:uppercase;color:var(--gold2);text-align:center}.title{text-align:center;font-size:clamp(42px,8vw,76px);font-weight:400;margin:10px 0}.subtitle{text-align:center;color:rgba(247,240,230,.7);font-size:15px;line-height:1.7;max-width:620px;margin:0 auto 42px}.ornament{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto}
+    .gallery{columns:1;column-gap:18px}.photo{break-inside:avoid;margin:0 0 18px;position:relative;border:1px solid rgba(232,212,139,.25);border-radius:18px;overflow:hidden;background:#1d080d;cursor:zoom-in}.photo img{display:block;width:100%;height:auto;transition:transform .6s ease}.photo:hover img{transform:scale(1.025)}.caption{position:absolute;left:0;right:0;bottom:0;padding:42px 16px 15px;background:linear-gradient(transparent,rgba(20,8,12,.9));font-size:14px;color:var(--cream)}
+    .footer{text-align:center;margin-top:44px;color:rgba(247,240,230,.5);font:10px/1.7 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.lightbox{position:fixed;inset:0;background:rgba(10,3,6,.94);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.lightbox.show{display:flex}.lightbox img{max-width:95vw;max-height:90vh;border-radius:14px;border:1px solid rgba(232,212,139,.5)}.close{position:fixed;right:18px;top:18px;border:1px solid rgba(232,212,139,.5);background:rgba(46,12,20,.8);color:var(--gold2);border-radius:50%;width:42px;height:42px;font-size:24px;cursor:pointer}
+    @media(min-width:700px){.gallery{columns:2}}@media(min-width:980px){.gallery{columns:3}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top"><a class="back" href="./">← Back to Invitation</a><div class="eyebrow">Shivani ✦ Jayanth</div><span style="width:132px"></span></div>
+    <div class="eyebrow">A memory before forever</div>
+    <h1 class="title">Engagement Gallery</h1>
+    <div class="ornament"></div>
+    <p class="subtitle">A little collection of moments from a beautiful chapter in our journey. Tap any photograph to view it full screen.</p>
+    <section class="gallery" aria-label="Engagement photographs">
+      <figure class="photo"><img src="./engagement/engagement-01.jpg" alt="Engagement memory 1" loading="eager"><figcaption class="caption">A beautiful beginning</figcaption></figure>
+      <figure class="photo"><img src="./engagement/engagement-02.jpg" alt="Engagement memory 2" loading="lazy"><figcaption class="caption">Together, surrounded by love</figcaption></figure>
+      <figure class="photo"><img src="./engagement/engagement-03.jpg" alt="Engagement memory 3" loading="lazy"><figcaption class="caption">A moment to remember</figcaption></figure>
+    </section>
+    <div class="footer">With love · Shivani & Jayanth · 2026</div>
+  </main>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer"><button class="close" id="close" aria-label="Close">×</button><img id="lightboxImg" alt="Expanded engagement photograph"></div>
+  <script>
+    const box=document.getElementById('lightbox'), img=document.getElementById('lightboxImg'), close=document.getElementById('close');
+    document.querySelectorAll('.photo img').forEach(i=>i.addEventListener('click',()=>{img.src=i.src;img.alt=i.alt;box.classList.add('show')}));
+    const hide=()=>box.classList.remove('show'); close.addEventListener('click',hide); box.addEventListener('click',e=>{if(e.target===box)hide()}); document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
+  </script>
+</body>
+</html>
